@@ -138,6 +138,30 @@ body.has-lang-banner #nav-placeholder .navbar.fixed-top {
   padding-left: 5px;
 }
 
+.schedule-section {
+  font-family: var(--font-serif-display);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+  text-align: center;
+}
+
+.schedule-status {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.schedule-table {
+  table-layout: fixed;
+  padding: 0;
+  font-size: 12px;
+}
+
+.schedule-table th,
+.schedule-table td {
+  vertical-align: middle;
+}
+
 @media (max-width: 767.98px) {
   :root {
     --lang-banner-height: 2.5rem;
