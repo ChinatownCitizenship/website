@@ -1,7 +1,7 @@
 (function () {
   var SHEET_URL =
     "https://docs.google.com/spreadsheets/d/17VmTRJj9qMnQ3ap7eIXpdhkQovps_8JiinE3aQwUInE/gviz/tq?tqx=out:json&gid=0&headers=0&tq=" +
-    encodeURIComponent("select A,B,C,D,E,F,G");
+    encodeURIComponent("select A,B,C,D,E");
 
   var COPY = {
     en: {
@@ -109,7 +109,7 @@
     rows.forEach(function (row) {
       var label = cellText(row, 0);
       var values = [];
-      for (var i = 1; i < 7; i++) values.push(cellText(row, i));
+      for (var i = 1; i < 5; i++) values.push(cellText(row, i));
 
       if (label && !isZoomLabel(label) && !isTimeSlot(label) && values.every(function (value) { return !value; })) {
         ensureSection(label);
@@ -121,7 +121,7 @@
         values.forEach(function (value, index) {
           if (value && !headerByCol[index]) headerByCol[index] = value;
         });
-        currentBlock = { time: label, names: [[], [], [], [], [], []], zoom: ["", "", "", "", "", ""] };
+        currentBlock = { time: label, names: [[], [], [], []], zoom: ["", "", "", ""] };
         currentSection.blocks.push(currentBlock);
         values.forEach(function (value, index) {
           if (value && value !== headerByCol[index]) currentBlock.names[index].push(value);
@@ -143,7 +143,7 @@
       });
     });
 
-    for (var col = 0; col < 6; col++) {
+    for (var col = 0; col < 4; col++) {
       var used = sections.some(function (section) {
         return section.blocks.some(function (block) {
           return headerByCol[col] || block.names[col].length || block.zoom[col];
